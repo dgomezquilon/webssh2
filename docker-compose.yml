@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  web:
+    container_name: shell-client
+    build: .
+    image: webssh2
+    ports:
+      - '2222'
+    networks:
+      - nginx-net
+    tty: true
+    logging:
+      driver: json-file
+      options:
+        max-size: 150m
+    environment:
+      VIRTUAL_PORT: 2222
+      VIRTUAL_HOST: secureshell-81cpb1s7ysa0r4vb.ilex-cloud.es
+      LETSENCRYPT_HOST: secureshell-81cpb1s7ysa0r4vb.ilex-cloud.es
+      LETSENCRYPT_EMAIL: letsencrypt@ideaspositivas.es
+networks:
+  nginx-net:
+    external: true
